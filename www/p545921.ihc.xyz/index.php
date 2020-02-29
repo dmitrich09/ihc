@@ -22,7 +22,7 @@
      
       <a href="http://p545921.ihc.xyz/mapyandex.html" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">ссылка на карту</a>
     <?php
-      
+         $xz = "xz";  
         function ajax(){
 
           if($_POST['name'] != null){
