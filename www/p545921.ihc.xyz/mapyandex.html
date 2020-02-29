@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+   
+        <head>
+                <script src="https://api-maps.yandex.ru/2.1/?ae701992-8e3a-4174-b37f-26ce4e8834d6&lang=ru_RU" type="text/javascript">
+                </script>
+            </head>
+   
+    <body>
+        <div id="map" style="width: 1000px; height: 400px ; "></div>
+
+          
+
+        <script type="text/javascript">
+            // Функция ymaps.ready() будет вызвана, когда
+            // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+            ymaps.ready(init);
+                function init(){  
+  //                  var clients = <?php print_r($array_clients); ?>;
+                      var myMap = new ymaps.Map("map", {
+                        center: [56.271195, 57.979193],
+                        zoom: 7
+                    });
+                    var currentId = 0;
+                    var coordinates = ['56.271195, 57.979193','58.038322, 56.099493' ];
+                   
+
+                    var objectManager = new ymaps.ObjectManager();
+                        var objects = [];
+                        for (var i = 0, l = coordinates.length; i < l; i++) {
+                            objects.push({
+                                type: 'Feature',
+                                id: currentId++,
+                                geometry: {
+                                    type: 'Point',
+                                    coordinates: coordinates[i]
+                                }
+                            });
+                        }
+                        console.log(objects);
+
+ //                       objectManager.add(objects);
+                        myMap.geoObjects.add(objectManager);
+
+                        myMap.events.add('click', function (e) {  
+                        myMap.balloon.close();
+		});
+
+
+	}
+            
+        </script>
+    
+       
+  </body>
+</html>
